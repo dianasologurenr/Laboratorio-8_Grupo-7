@@ -20,7 +20,7 @@ $("#juegoform").submit(function (e) {
     let gen_invalid = genero === "";
     let plat_invalid = plataforma === "";
     let dis_invalid = distribuidora === "";
-    let img_invalid = (imagen.length < 10 || imagen.length > 256) && !validURL(imagen);
+    let img_invalid = (imagen.length < 10 || imagen.length > 256) || !validURL(imagen);
 
     if (precio_invalid) {
         $("#error-precio").show(500).delay(3000).hide(500);

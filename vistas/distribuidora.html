@@ -56,15 +56,16 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="web">Web</label>
-                            <input type="url" class="form-control" id="web" name="web">
+                            <label>Web</label>
+                            <input type="url" id="web" class="form-control">
                             <div class="invalid-feedback" id="error-web" style="display: none; margin-bottom: 10px;">
-                                Debe contener entre 3 y 198 caracteres y debe ser un URL </div>
+                                Debe ser una URL entre 3 y 198 caracteres
+                            </div>
                         </div>
 
                         
                         <div class="form-group">
-                            <label for="fundacion">Fundación <span style="opacity: 28%">(Ingrese un número)</span></label>
+                            <label for="fundacion">Fundación <span style="opacity: 28%">(Ingrese un número entre 1800 y 2100)</span></label>
                             <input type="number" class="form-control" id="fundacion" name="fundacion">
                             <div class="invalid-feedback" id="error-fundacion" style="display: none; margin-bottom: 10px;">
                                 Debe ser un número, mínimo 1800 y máximo 2100 </div>
@@ -94,7 +95,7 @@
 
 
                         <div class="form-group">
-                            <a type="button" class="btn btn-danger" id="btn-cancelar"> Cancelar</a>
+                            <button type="button" class="btn btn-danger me-2" id="btn-cancelar"> Cancelar</a>
                             <button type="submit" class="btn btn-primary">Añadir</button>
                         </div>
 

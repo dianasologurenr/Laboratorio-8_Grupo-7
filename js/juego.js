@@ -1,94 +1,109 @@
-$("#juegoform").submit(function(e) {
+$("#juegoform").submit(function (e) {
     e.preventDefault();
-    
-    var nombre = $("#nombre").val();
-    var descripcion = $("#descripcion").val();
-    var genero = $("#genero").val();
-    var precio = $("#precio").val();
-    var imagen = $("#imagen").val();
-    var distribuidora = $("#distribuidora").val();
-    var plataforma = $("#plataforma").val();
+
+    let nombre = $("#nombre").val();
+    let descripcion = $("#descripcion").val();
+    let genero = $("#genero").val();
+    let precio = $("#precio").val();
+    let imagen = $("#imagen").val();
+    let distribuidora = $("#distribuidora").val();
+    let plataforma = $("#plataforma").val();
+
+    let nombre_invalid = nombre.length < 3 || nombre.length > 50;
+    let descrip_invalid = descripcion.length < 3 || descripcion.length > 512;
+    let precio_invalid = !isNumeric(precio) && (parseFloat(precio) < 50 || parseFloat(precio) > 550);
+    let gen_invalid = genero === "";
+    let plat_invalid = plataforma === "";
+    let dis_invalid = distribuidora === "";
+    let img_invalid = imagen.length < 10 || imagen.length > 256;
 
 
-    if((nombre.length <3 || nombre.length>50)){
+    if (nombre_invalid) {
         $("#error-nombre").show(500).delay(3000).hide(500);
         $("#nombre").addClass("is-invalid");
-        setTimeout(function() {
+        setTimeout(function () {
             $("#nombre").removeClass('is-invalid');
         }, 4000);
     }
-    if((descripcion.length <3 || descripcion.length>512)){
+
+    if (descrip_invalid) {
         $("#error-descripcion").show(500).delay(3000).hide(500);
         $("#descripcion").addClass("is-invalid");
-        setTimeout(function() {
+        setTimeout(function () {
             $("#descripcion").removeClass('is-invalid');
         }, 4000);
-    } 
-    if(genero === ""){
+    }
+
+    if (gen_invalid) {
         $("#error-genero").show(500).delay(3000).hide(500);
         $("#genero").addClass("is-invalid");
-        setTimeout(function() {
+        setTimeout(function () {
             $("#genero").removeClass('is-invalid');
         }, 4000);
-    } 
-    if(typeof(precio) === String){
+    }
+
+    if (precio_invalid) {
         $("#error-precio").show(500).delay(3000).hide(500);
         $("#precio").addClass("is-invalid");
-        setTimeout(function() {
-            $("#precio").removeClass('is-invalid');
-        }, 4000);
-    } 
-    if(isNumeric(precio)){
-        if(parseFloat(precio) <50 || parseFloat(precio)>550 ){
-            $("#error-precio-maxmin").show(500).delay(3000).hide(500);
-            $("#precio").addClass("is-invalid");
-            setTimeout(function() {
-                $("#precio").removeClass('is-invalid');
-            }, 4000);
-        }
-    } else {
-        $("#error-precio-num").show(500).delay(3000).hide(500);
-        $("#precio").addClass("is-invalid");
-        setTimeout(function() {
+        setTimeout(function () {
             $("#precio").removeClass('is-invalid');
         }, 4000);
     }
 
-    function isNumeric(str) {
-        if (typeof str != "string") return false // we only process strings!
-        return !isNaN(str) && // use type coercion to parse the entirety of the string (parseFloat alone does not do this)...
-               !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
-      }
 
-
-    // Rodrigo estuvo aquí :V
-
-    if ((imagen.length < 10 || imagen.length> 256)) {
+    if (img_invalid) {
         $("#error-imagen").show(500).delay(3000).hide(500);
         $("#imagen").addClass("is-invalid");
-        setTimeout(function() {
+        setTimeout(function () {
             $("#imagen").removeClass('is-invalid');
         }, 4000);
     }
 
-    if (plataforma === "") {
+    if (plat_invalid) {
         $("#error-plataforma").show(500).delay(3000).hide(500);
         $("#plataforma").addClass("is-invalid");
-        setTimeout(function() {
+        setTimeout(function () {
             $("#plataforma").removeClass('is-invalid');
         }, 4000);
     }
 
-    if (distribuidora === "") {
+    if (dis_invalid) {
         $("#error-distribuidora").show(500).delay(3000).hide(500);
         $("#distribuidora").addClass("is-invalid");
-        setTimeout(function() {
+        setTimeout(function () {
             $("#distribuidora").removeClass('is-invalid');
         }, 4000);
     }
 
-    
+    if (!(nombre_invalid || descrip_invalid || precio_invalid || gen_invalid || plat_invalid ||
+        dis_invalid || img_invalid)) {
+        console.log("DAVID");
+
+        let juego = '<tr>\n' +
+            '                                <td></td>\n' +
+            '                                <td><img style="max-width: 100px;">' + imagen + '</td>\n' +
+            '                                <td>\n' +
+            '                                    <span>' + nombre + '</span>\n' +
+            '                                    <span class="badge bg-warning text-dark">' + genero + '</span>\n' +
+            '                                </td>\n' +
+            '                                <td>' + descripcion + '</td>\n' +
+            '                                <td>' + plataforma + '</td>\n' +
+            '                                <td>' + distribuidora + '</td>\n' +
+            '                                <td>' + precio + '</td>\n' +
+            '                                <td><a class="btn btn-primary" href="#"><span class="bi bi-pencil-square"></span> Editar </a></td>\n' +
+            '                                <td><a class="btn btn-danger" href="#"><span class="bi bi-trash"></span> Borrar</a></td>\n' +
+            '                            </tr>'
 
 
+        $("#juegos-container").append(juego)
+
+    }
 
 })
+
+function isNumeric(str) {
+    if (typeof str != "string") return false
+    return !isNaN(str) &&
+        !isNaN(parseFloat(str))
+}
+

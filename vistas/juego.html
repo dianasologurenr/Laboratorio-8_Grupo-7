@@ -109,13 +109,7 @@
                                 <input type="text" class="form-control" id="precio" name="precio">
                                 <div class="invalid-feedback" id="error-precio"
                                     style="display: none; margin-bottom: 10px;">
-                                    Debe ser un número, mínimo 50 y máximo 550</div>
-                                <div class="invalid-feedback" id="error-precio-num"
-                                    style="display: none; margin-bottom: 10px;">
-                                    Debe ser un número</div>
-                                <div class="invalid-feedback" id="error-precio-maxmin"
-                                    style="display: none; margin-bottom: 10px;">
-                                    Debe ser un valor entre S/.50 y S/.550</div>
+                                    Debe ser un número entre S/.50 y S/.550</div>
                             </div>
                         </div>
 
@@ -147,26 +141,23 @@
                                 <th style="width: 8%"></th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr th:each="juego, info : ${listaJuegos}">
-                                <td th:text="${info.index + 1}"></td>
-                                <td><img th:src="${juego.image}" style="max-width: 100px;"></td>
+                        <tbody id="juegos-container">
+                            <!-- <tr>
+                                <td></td>
+                                <td><img style="max-width: 100px;"> + imagen + </td>
                                 <td>
-                                    <span th:text="${juego.nombre} "></span>
-                                    <span class="badge bg-warning text-dark" th:text="${juego.genero.nombre}"></span>
+                                    <span> + nombre + </span>
+                                    <span class="badge bg-warning text-dark"> + genero + </span>
                                 </td>
-                                <td th:text="${juego.descripcion}"></td>
-                                <td th:text="${juego.plataforma.nombre}"></td>
-                                <td th:text="${juego.distribuidora.nombre}"></td>
-                                <td th:text="${juego.precio}"></td>
+                                <td> +descripcion+ </td>
+                                <td> +plataforma +</td>
+                                <td>+ distribuidora+ </td>
+                                <td> + precio </td>+ </td>
 
-                                <td><a class="btn btn-primary" th:title="Editar"
-                                        th:href="@{'/juegos/editar?id=' + ${juego.idjuego}}"><span
-                                            class="bi bi-pencil-square"></span></a></td>
-                                <td><a class="btn btn-danger" th:title="Borrar"
-                                        th:href="@{'/juegos/borrar?id=' + ${juego.idjuego}}"><span
-                                            class="bi bi-trash"></span></a></td>
-                            </tr>
+                                <td><a class="btn btn-primary" href="#"><span class="bi bi-pencil-square"></span> Editar
+                                    </a></td>
+                                <td><a class="btn btn-danger" href="#"><span class="bi bi-trash"></span> Borrar</a></td>
+                            </tr> -->
                         </tbody>
                     </table>
 

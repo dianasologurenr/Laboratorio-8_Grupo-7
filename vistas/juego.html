@@ -60,7 +60,7 @@
                         <div class="form-group">
                             <label for="genero">Género</label>
                             <select class="form-select" name="genero" id="genero">
-                                <option value="">- Seleccione -</option>
+                                <option value="">- Seleccione un género -</option>
                                 <option value="1">Acción</option>
                                 <option value="2">Simulación</option>
                                 <option value="3">Agilidad</option>
@@ -112,21 +112,20 @@
                                     Debe ser un número entre S/.50 y S/.550</div>
                             </div>
                         </div>
-
-                        <input type="hidden" th:field="*{idjuego}" />
                         <div class="form-group">
-                            <a href="#" class="btn btn-danger">Cancelar</a>
+                            <button type="button" class="btn btn-danger me-2" id="btn-cancelar">Cancelar</a>
                             <button type="submit" class="btn btn-primary">Añadir</button>
                         </div>
                     </form>
 
                     <!-- Lista de Juegos -->
 
-                    <div th:if="${msg != null}" class="alert alert-success alert-dismissible fade show" role="alert">
+                    <div class="my-3 alert alert-success alert-dismissible fade show" role="alert" style="display: none;" id="msg-creado">
                         <i class="bi bi-check-circle-fill"></i>
-                        <span th:text="${msg}"></span>
+                        <span>Juego creado exitosamente!</span>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
+
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -142,22 +141,6 @@
                             </tr>
                         </thead>
                         <tbody id="juegos-container">
-                            <!-- <tr>
-                                <td></td>
-                                <td><img style="max-width: 100px;"> + imagen + </td>
-                                <td>
-                                    <span> + nombre + </span>
-                                    <span class="badge bg-warning text-dark"> + genero + </span>
-                                </td>
-                                <td> +descripcion+ </td>
-                                <td> +plataforma +</td>
-                                <td>+ distribuidora+ </td>
-                                <td> + precio </td>+ </td>
-
-                                <td><a class="btn btn-primary" href="#"><span class="bi bi-pencil-square"></span> Editar
-                                    </a></td>
-                                <td><a class="btn btn-danger" href="#"><span class="bi bi-trash"></span> Borrar</a></td>
-                            </tr> -->
                         </tbody>
                     </table>
 
@@ -167,7 +150,7 @@
                         <span th:text="${msg}"></span>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                    
+
 
                     <div class="container-fluid">
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 card-app">

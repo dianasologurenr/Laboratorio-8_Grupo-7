@@ -94,8 +94,10 @@ $("#juegoform").submit(function (e) {
             '                            </tr>'
 
 
-        $("#juegos-container").append(juego)
-        
+        $("#msg-creado").show(500).delay(3000).hide(500)
+        $("#juegos-container").append(juego)    
+        $('#juegoform').trigger("reset")    
+
         $(".btn-borrar").click(function () {
             $(this).parent().parent().remove();
         })
@@ -109,6 +111,11 @@ function isNumeric(str) {
     return !isNaN(str) &&
         !isNaN(parseFloat(str))
 }
+
+
+$('#btn-cancelar').click(function () {
+    $('#juegoform').trigger('reset');
+})
 
 
 

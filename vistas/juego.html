@@ -50,24 +50,25 @@
                         </div>
                         <div class="form-group">
                             <label>Descripción</label>
-                            <textarea class="form-control"
-                                th:classappend="${#fields.hasErrors('descripcion')?'is-invalid':''}" id="descripcion"
-                                name="descripcion" th:field="*{descripcion}"></textarea>
-                            <div class="invalid-feedback"  th:if="${#fields.hasErrors('descripcion')}"
-                                th:errors="*{descripcion}">Error</div>
+                            <textarea class="form-control" id="descripcion" name="descripcion"></textarea>
+                            <div class="invalid-feedback" id="error-descripcion" style="display: none; margin-bottom: 10px;">
+                                Debe contener entre 3 y 512 caracteres</div>
                         </div>
+
+                        
                         <div class="form-group">
-                            <label for="genero.idgenero">Género</label>
-                            <select class=" form-select"
-                                th:classappend="${#fields.hasErrors('genero.idgenero')?'is-invalid':''}"
-                                th:field="*{genero.idgenero}">
+                            <label for="genero">Género</label>
+                            <select class="form-select" name="genero" id="genero">
                                 <option value="-1">- Seleccione -</option>
-                                <option th:each="genero : ${listaGeneros}" th:value="${genero.idgenero}"
-                                    th:text="${genero.nombre}" th:selected="(${genero.idgenero} == *{genero.idgenero})">
-                                </option>
+                                <option value="1">Acción</option>
+                                <option value="2">Simulación</option>
+                                <option value="3">Agilidad</option>
+                                <option value="4">Acción-Aventura</option>
+                                <option value="5">RPG</option>
+
                             </select>
-                            <div class="invalid-feedback" th:if="${#fields.hasErrors('genero.idgenero')}"
-                                th:errors="*{genero.idgenero}">Error</div>
+                            <div class="invalid-feedback" id="error-genero" style="display: none; margin-bottom: 10px;">
+                                Debe seleccionar un género</div>
                         </div>
                         <div class="form-group">
                             <label for="plataforma.idplataforma">Plataforma</label>
@@ -100,18 +101,19 @@
                             <label>Imagen URL</label>
                             <input type="text" class="form-control" th:field="*{image}">
                         </div>
+
                         <div class="form-group">
                             <label>Precio</label>
                             <div class="input-group mb-2">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">S/</div>
                                 </div>
-                                <input type="text" th:classappend="${#fields.hasErrors('precio')?'is-invalid':''}"
-                                    class="form-control" th:field="*{precio}">
-                                <div class="invalid-feedback" th:if="${#fields.hasErrors('precio')}"
-                                    th:errors="*{precio}">Error</div>
+                                <input type="text" class="form-control" id="precio" name="precio">
+                                <div class="invalid-feedback" id="error-precio" style="display: none; margin-bottom: 10px;">
+                                    Debe ser un número, mínimo 50 y máximo 550</div>
                             </div>
                         </div>
+
                         <input type="hidden" th:field="*{idjuego}" />
                         <div class="form-group">
                             <a href="#" class="btn btn-danger">Cancelar</a>

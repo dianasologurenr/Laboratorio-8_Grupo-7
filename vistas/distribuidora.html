@@ -40,7 +40,7 @@
                     </div>
                     <!-- Formulario -->
 
-                    <form method="POST" class="row g-3" action="juego.html" id="juegoform">
+                    <form method="POST" class="row g-3" action="distribuidora.html" id="distribuidoraForm">
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
                             <input type="text" class="form-control" id="nombre" name="nombre">
@@ -94,7 +94,7 @@
 
 
                         <div class="form-group">
-                            <a href="#" class="btn btn-danger">Cancelar</a>
+                            <a type="button" class="btn btn-danger" id="btn-cancelar"> Cancelar</a>
                             <button type="submit" class="btn btn-primary">Añadir</button>
                         </div>
 
@@ -102,11 +102,12 @@
 
                     <!-- Distribuidores -->
 
-                    <div th:if="${msg != null}" class="alert alert-success alert-dismissible fade show" role="alert">
+                    <div class="my-3 alert alert-success alert-dismissible fade show" role="alert" style="display: none;" id="msg-creado">
                         <i class="bi bi-check-circle-fill"></i>
-                        <span th:text="${msg}"></span>
+                        <span>Distribuidora creado exitosamente!</span>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
+
                     <table class="table table-striped">
                         <thead>
                             <tr>

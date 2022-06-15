@@ -1,6 +1,6 @@
 var index=1;
 
-$("#juegoform").submit(function(e) {
+$("#distribuidoraForm").submit(function(e) {
     e.preventDefault();
     
     var nombre = $("#nombre").val();
@@ -76,7 +76,17 @@ $("#juegoform").submit(function(e) {
 '                            </tr>'
         $("#distribuidores-container").append(distribuidora)
         index++;
+
+        $("#msg-creado").show(500).delay(3000).hide(500)
+        $('#distribuidoraForm').trigger("reset")
     }
+
+    $('#btn-cancelar').click(function () {
+        $('#distribuidoraForm').trigger('reset');
+    })
+
+    
+    
 
     
 

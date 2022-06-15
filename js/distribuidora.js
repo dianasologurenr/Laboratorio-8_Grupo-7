@@ -1,4 +1,4 @@
-var index=1;
+var index=0;
 var distList=[]
 var edit=false
 var idedit=-1
@@ -84,8 +84,8 @@ $("#distribuidoraForm").submit(function(e) {
             let distribuidora= createDistri(index, nombre,descripcion, web, fundacion,pais)
             $("#distribuidores-container").append(distribuidora)
             $("#msg-creado").show(500).delay(3000).hide(500)
-            distList.push(distribuidora);
-            index++;
+            distList.push(temp_dist);
+            
         }
 
 
@@ -93,6 +93,8 @@ $("#distribuidoraForm").submit(function(e) {
         $(".btn-borrar").click(function () {
             $(this).parent().parent().remove();
         })
+        index++;
+        
         
     }
 

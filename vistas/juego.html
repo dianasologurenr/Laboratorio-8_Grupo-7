@@ -70,35 +70,31 @@
                                 th:errors="*{genero.idgenero}">Error</div>
                         </div>
                         <div class="form-group">
-                            <label for="plataforma.idplataforma">Plataforma</label>
-                            <select class="form-select"
-                                th:classappend="${#fields.hasErrors('plataforma.idplataforma')?'is-invalid':''}"
-                                th:field="*{plataforma.idplataforma}">
-                                <option value="-1">- Seleccione -</option>
-                                <option th:each="plataforma : ${listaPlataformas}" th:value="${plataforma.idplataforma}"
-                                    th:text="${plataforma.nombre}"
-                                    th:selected="(${plataforma.idplataforma} == *{plataforma.idplataforma})"></option>
+                            <label for="plataforma">Plataforma</label>
+                            <select class="form-select" id="plataforma">
+                                <option value="">- Seleccione una plataforma -</option>
+                                <option value="1">Plataforma 1</option>
+                                <option value="2">Plataforma 2</option>
+                                <option value="3">Plataforma 3</option>
                             </select>
-                            <div class="invalid-feedback" th:if="${#fields.hasErrors('plataforma.idplataforma')}"
-                                th:errors="*{plataforma.idplataforma}">Error</div>
+                            <div class="invalid-feedback" id="error-plataforma">Debe seleccionar una plataforma</div>
                         </div>
                         <div class="form-group">
-                            <label for="distribuidora.iddistribuidora">Distribuidora</label>
-                            <select class="form-select"
-                                th:classappend="${#fields.hasErrors('distribuidora.iddistribuidora')?'is-invalid':''}"
-                                th:field="*{distribuidora.iddistribuidora}">
-                                <option value="-1">- Seleccione -</option>
-                                <option th:each="distribuidora : ${listaDistribuidoras}"
-                                    th:value="${distribuidora.iddistribuidora}" th:text="${distribuidora.nombre}"
-                                    th:selected="(${distribuidora.iddistribuidora} == *{distribuidora.iddistribuidora})">
-                                </option>
+                            <label for="distribuidora">Distribuidora</label>
+                            <select class="form-select" id="distribuidora">
+                                <option value="">- Seleccione una distribuidora -</option>
+                                <option value="1">Distribuidora 1</option>
+                                <option value="2">Distribuidora 2</option>
+                                <option value="3">Distribuidora 3</option>
                             </select>
-                            <div class="invalid-feedback" th:if="${#fields.hasErrors('distribuidora.iddistribuidora')}"
-                                th:errors="*{distribuidora.iddistribuidora}">Error</div>
+                            <div class="invalid-feedback" id="error-distribuidora">Debe seleccionar una distribuidora</div>
                         </div>
                         <div class="form-group">
                             <label>Imagen URL</label>
-                            <input type="text" class="form-control" th:field="*{image}">
+                            <input type="text" id="imagen" class="form-control">
+                            <div class="invalid-feedback" id="error-imagen" style="display: none; margin-bottom: 10px;">
+                                Debe contener entre 10 y 256 caracteres
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Precio</label>

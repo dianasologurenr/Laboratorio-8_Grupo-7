@@ -28,10 +28,11 @@
     <div id="content">
         <main>
             <!-- Contenido -->
-        <div class="page-header text-center">
-            <h2 >Plataforma</h2>
-        </div>
-        <div class="container-fluid">
+            <div class="container-fluid"></div>
+                <div class="page-header text-center">
+                    <h2 >Plataforma</h2>
+                </div>
+                 <!-- Formulario -->
                 <form method="POST"  action="plataforma.html" id="plataformaform">
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
@@ -45,40 +46,43 @@
                         <div class="invalid-feedback" id="error-descripcion" style="display: none; margin-bottom: 10px;">
                             Debe contener entre 3 y 512 caracteres </div>
                     </div >
-                    <div class="form-group">
+                    <div class="form-group mb-2">
                         <label for="web">Web</label>
                         <input type="url" class="form-control" id="web" name="web"></input>
                         <div class="invalid-feedback" id="error-web" style="display: none; margin-bottom: 10px;">
                             Debe contener entre 3 y 256 caracteres y debe ser un url</div>
                     </div >
-                    <input type="hidden" th:field="*{idplataforma}" th:if="${plataforma.idplataforma > 0}" />
                     <div class="form-group">
-                        <a href="#" class="btn btn-danger mt-2">Cancelar</a>
-                        <button type="submit" class="btn btn-primary mt-2">Añadir</button>
+                        <button type="button" class="btn btn-danger me-2" id="btn-cancelar">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Añadir</button>
                     </div>
                 </form>
-        </div>
+
+                 <!-- Lista de Plataformas -->
+
+                <div class="my-3 alert alert-success alert-dismissible fade show" role="alert" style="display: none;" id="msg-creado">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>Plataforma creado exitosamente!</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Web</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="plataforma-container">
+                    </tbody>
+                </table>
+            </div>
         </main>
     </div>
-    <div class="container-fluid">
-
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Web</th>
-                <th></th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody class="tabla" id="tabla">
-            </tbody>
-        </table>
-    
-    </div>
-
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

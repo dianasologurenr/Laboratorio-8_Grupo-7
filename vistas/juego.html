@@ -61,11 +61,11 @@
                             <label for="genero">Género</label>
                             <select class="form-select" name="genero" id="genero">
                                 <option value="">- Seleccione un género -</option>
-                                <option value="1">Acción</option>
-                                <option value="2">Simulación</option>
-                                <option value="3">Agilidad</option>
-                                <option value="4">Acción-Aventura</option>
-                                <option value="5">RPG</option>
+                                <option value="Acción">Acción</option>
+                                <option value="Simulación">Simulación</option>
+                                <option value="Agilidad">Agilidad</option>
+                                <option value="Acción-Aventura">Acción-Aventura</option>
+                                <option value="RPG">RPG</option>
 
                             </select>
                             <div class="invalid-feedback" id="error-genero" style="display: none; margin-bottom: 10px;">
@@ -75,9 +75,10 @@
                             <label for="plataforma">Plataforma</label>
                             <select class="form-select" id="plataforma">
                                 <option value="">- Seleccione una plataforma -</option>
-                                <option value="1">Plataforma 1</option>
-                                <option value="2">Plataforma 2</option>
-                                <option value="3">Plataforma 3</option>
+                                <option value="Wii">Wii</option>
+                                <option value="PlayStation 4">PlayStation 4</option>
+                                <option value="Xbox 360">Xbox 360</option>
+                                <option value="PlayStation 5">PlayStation 5</option>
                             </select>
                             <div class="invalid-feedback" id="error-plataforma">Debe seleccionar una plataforma</div>
                         </div>
@@ -85,9 +86,10 @@
                             <label for="distribuidora">Distribuidora</label>
                             <select class="form-select" id="distribuidora">
                                 <option value="">- Seleccione una distribuidora -</option>
-                                <option value="1">Distribuidora 1</option>
-                                <option value="2">Distribuidora 2</option>
-                                <option value="3">Distribuidora 3</option>
+                                <option value="Nintendo">Nintendo</option>
+                                <option value="Electronic Arts">Electronic Arts</option>
+                                <option value="Ubisoft">Ubisoft</option>
+                                <option value="Activision">Activision</option>
                             </select>
                             <div class="invalid-feedback" id="error-distribuidora">Debe seleccionar una distribuidora
                             </div>
@@ -96,7 +98,7 @@
                             <label>Imagen URL</label>
                             <input type="text" id="imagen" class="form-control">
                             <div class="invalid-feedback" id="error-imagen" style="display: none; margin-bottom: 10px;">
-                                Debe contener entre 10 y 256 caracteres
+                                Debe ser una URL entre 10 y 256 caracteres
                             </div>
                         </div>
 
@@ -129,7 +131,7 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>ID</th>
                                 <th></th>
                                 <th style="width: 18%">Nombre</th>
                                 <th style="width: 32%">Descripción</th>
@@ -142,39 +144,7 @@
                         </thead>
                         <tbody id="juegos-container">
                         </tbody>
-                    </table>
-
-
-                    <div th:if="${msg != null}" class="alert alert-success alert-dismissible fade show" role="alert">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span th:text="${msg}"></span>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-
-
-                    <div class="container-fluid">
-                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 card-app">
-                            <div class="col mb-4" th:each="juego, index : ${listaJuegos}">
-                                <div class="card">
-                                    <img class="card-img-top" alt="Card image cap" th:src="${juego.image}">
-                                    <span class="position-absolute top-100 end-0 translate-middle badge bg-danger fs-6"
-                                        th:text="'$ ' + ${juego.precio}"></span>
-                                    <a sec:authorize="hasAnyAuthority('ADMIN','USER')" class="btn btn-primary"
-                                        th:title="Comprar" th:href="@{'/carrito/anadir?id=' + ${juego.idjuego}}"><span
-                                            class="bi bi-plus-circle"></span> Comprar</a>
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            <span th:text="${juego.nombre}"></span>
-                                            <span class="badge bg-warning text-dark fs-6"
-                                                th:text="${juego.genero.nombre}"></span>
-                                        </h5>
-                                        <p class="card-text" th:text="${juego.descripcion}"></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    </table>                   
                 </div>
                 <!-- /Contenido -->
 

@@ -77,7 +77,6 @@ $("#juegoform").submit(function (e) {
 
     if (!(nombre_invalid || descrip_invalid || precio_invalid || gen_invalid || plat_invalid ||
         dis_invalid || img_invalid)) {
-        console.log("DAVID");
 
         let juego = '<tr>\n' +
             '                                <td></td>\n' +
@@ -90,12 +89,16 @@ $("#juegoform").submit(function (e) {
             '                                <td>' + plataforma + '</td>\n' +
             '                                <td>' + distribuidora + '</td>\n' +
             '                                <td>' + precio + '</td>\n' +
-            '                                <td><a class="btn btn-primary" href="#"><span class="bi bi-pencil-square"></span> Editar </a></td>\n' +
-            '                                <td><a class="btn btn-danger" href="#"><span class="bi bi-trash"></span> Borrar</a></td>\n' +
+            '                                <td><a class="btn btn-primary"><span class="bi bi-pencil-square"></span> Editar </a></td>\n' +
+            '                                <td><button class="btn btn-danger btn-borrar"><span class="bi bi-trash"></span> Borrar</button></td>\n' +
             '                            </tr>'
 
 
         $("#juegos-container").append(juego)
+        
+        $(".btn-borrar").click(function () {
+            $(this).parent().parent().remove();
+        })
 
     }
 
@@ -106,4 +109,6 @@ function isNumeric(str) {
     return !isNaN(str) &&
         !isNaN(parseFloat(str))
 }
+
+
 
